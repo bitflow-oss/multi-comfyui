@@ -7,7 +7,7 @@
 ## 1. Clone this repository
 $ https://github.com/bitflow-oss/multi-comfyui.git
 
-## 2. You need to change 2 line at 'Dockerfile' describing torch and cuda version like below.
+## 2. After clone this sources, you need to change 2 line at 'Dockerfile' describing torch and cuda version like below.
 
 - FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel AS builder
 - FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
@@ -15,7 +15,7 @@ $ https://github.com/bitflow-oss/multi-comfyui.git
 Fix it to the version you required. 
 Find more image version from https://hub.docker.com/r/pytorch/pytorch/tags
 
-## 2. Set environment variables to meet your requirements
+## 2. Modify path & versions at the files below to meet your requirements
 - extra_model_paths.yaml , docker-compose-build.yml , docker-compose.yml
 
 ## 3. Build docker image using Dockerfile
