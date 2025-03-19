@@ -1,0 +1,10 @@
+services:
+  comfyui-build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: multi-comfyui
+    environment:
+      - CLI_ARGS=
+      - HF_TOKEN=hf_abcdefg
+      - LOW_VRAM=false

@@ -1,0 +1,81 @@
+services:
+
+  comfyui-1:
+    container_name: comfyui-1
+    image: multi-comfyui:latest
+    ports:
+      - "9100:8188"
+    restart: always
+    working_dir: /app
+    volumes:
+      - "./models:/app/models"
+      - "./user:/app/user"
+    command: ["python", "main.py", "--cuda-device", "0", "--listen", "0.0.0.0"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+#              device_ids: ['0']
+              capabilities: [gpu]
+
+
+  comfyui-2:
+    container_name: comfyui-2
+    image: multi-comfyui:latest
+    ports:
+      - "9200:8188"
+    restart: always
+    working_dir: /app
+    volumes:
+      - "./models:/app/models"
+      - "./user:/app/user"
+    command: [ "python", "main.py", "--cuda-device", "1", "--listen", "0.0.0.0" ]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+
+
+  comfyui-3:
+    container_name: comfyui-3
+    image: multi-comfyui:latest
+    ports:
+      - "9300:8188"
+    restart: always
+    working_dir: /app
+    volumes:
+      - "./models:/app/models"
+      - "./user:/app/user"
+    command: ["python", "main.py", "--cuda-device", "2", "--listen", "0.0.0.0"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+
+  comfyui-4:
+    container_name: comfyui-4
+    image: multi-comfyui:latest
+    ports:
+      - "9400:8188"
+    restart: always
+    working_dir: /app
+    volumes:
+      - "./models:/app/models"
+      - "./user:/app/user"
+    command: ["python", "main.py", "--cuda-device", "3", "--listen", "0.0.0.0"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
