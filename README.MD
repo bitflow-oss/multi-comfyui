@@ -2,9 +2,7 @@
 
 - This project started to run multi ComfyUI to match each GPU count.
 - Using docker, runs 2~8 ComfyUI images.
-- Base image is Pytorch official image that CUDA already installed
-
-- So, 
+- Base image is Pytorch official image that CUDA already installed 
 
 ## 1. Clone this repository
 $ https://github.com/bitflow-oss/multi-comfyui.git
@@ -14,20 +12,20 @@ $ https://github.com/bitflow-oss/multi-comfyui.git
 - FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel AS builder
 - FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
 
-### Fix it to the version you required. 
-### Find more image version from https://hub.docker.com/r/pytorch/pytorch/tags
+Fix it to the version you required. 
+Find more image version from https://hub.docker.com/r/pytorch/pytorch/tags
 
 ## 2. Set environment variables to meet your requirements
-### extra_model_paths.yaml , docker-compose-build.yml , docker-compose.yml
+- extra_model_paths.yaml , docker-compose-build.yml , docker-compose.yml
 
 ## 3. Build docker image using Dockerfile
-### run docker-build.cmd or docker-build.sh
+$ ./docker-build.sh
 
 ## 4. Run docker-compose
-### run docker-run.cmd or docker-run.sh
+$ ./docker-run.sh
 
-## ps. requirements.txt file is the recent requirements.txt from ComfyUI github.
-### We've annotated Torch, Torch Vision, and Torch Audio because they are already installed in the official PyTorch image.
-### The requirements.txt file overrides the file on github, 
-### so you'll need to check for and replace the latest requirements.txt file 
-### and then re-comment out torch, torch vision, torch audio.
+### ps. requirements.txt file is the recent requirements.txt from ComfyUI github.
+We've annotated Torch, Torch Vision, and Torch Audio because they are already installed in the official PyTorch image.
+The requirements.txt file overrides the file on github, 
+so you'll need to check for and replace the latest requirements.txt file 
+and then re-comment out torch, torch vision, torch audio.
