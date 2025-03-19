@@ -15,7 +15,7 @@
 ### Find more image version from https://hub.docker.com/r/pytorch/pytorch/tags
 
 ## 2. Set environment variables to meet your requirements
-### extra_model_paths.yaml , 
+### extra_model_paths.yaml , docker-compose-build.yml , docker-compose.yml
 
 ## 3. Build docker image using Dockerfile
 ### run docker-build.cmd or docker-build.sh
