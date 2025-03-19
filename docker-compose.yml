@@ -8,6 +8,7 @@ services:
     restart: always
     working_dir: /app
     volumes:
+      - "./custom_nodes:/app/custom_nodes"
       - "./output:/app/output"
       - "./models:/app/models"
       - "./user:/app/user"
@@ -29,6 +30,7 @@ services:
     restart: always
     working_dir: /app
     volumes:
+      - "./custom_nodes:/app/custom_nodes"
       - "./output:/app/output"
       - "./models:/app/models"
       - "./user:/app/user"
@@ -50,6 +52,7 @@ services:
     restart: always
     working_dir: /app
     volumes:
+      - "./custom_nodes:/app/custom_nodes"
       - "./output:/app/output"
       - "./models:/app/models"
       - "./user:/app/user"
@@ -71,6 +74,7 @@ services:
     restart: always
     working_dir: /app
     volumes:
+      - "./custom_nodes:/app/custom_nodes"
       - "./output:/app/output"
       - "./models:/app/models"
       - "./user:/app/user"

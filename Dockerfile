@@ -1,7 +1,9 @@
 # ------------------- Stage 1: Build Stage ------------------------------
 FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel AS builder
 
-RUN mkdir models user output
+RUN mkdir models user output custom_nodes
+
+RUN cd custom_nodes && git clone https://github.com/ltdrdata/ComfyUI-Manager
 
 RUN apt-get update
 RUN apt-get install -y git --no-install-recommends --no-install-suggests
@@ -11,9 +13,7 @@ WORKDIR /code
 # Copy the current directory contents into the container at $HOME/app setting the owner to the user
 RUN git clone https://github.com/comfyanonymous/ComfyUI
 
-RUN cd /code/ComfyUI/custom_nodes && git clone https://github.com/ltdrdata/ComfyUI-Manager
-
-RUN pip3 wheel --no-cache-dir --no-deps --wheel-dir /app/wheels -r /code/ComfyUI/custom_nodes/ComfyUI-Manager/requirements.txt
+#RUN pip3 wheel --no-cache-dir --no-deps --wheel-dir /app/wheels -r /code/ComfyUI/custom_nodes/ComfyUI-Manager/requirements.txt
 
 RUN cd /code/ComfyUI
 
