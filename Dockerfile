@@ -1,7 +1,7 @@
 # ------------------- Stage 1: Build Stage ------------------------------
 FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel AS builder
 
-RUN mkdir models user
+RUN mkdir models user output
 
 RUN apt-get update
 RUN apt-get install -y git --no-install-recommends --no-install-suggests
