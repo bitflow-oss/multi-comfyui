@@ -2,7 +2,7 @@ services:
 
   comfyui-1:
     container_name: comfyui-1
-    image: multi-comfyui:latest
+    image: multi-comfyui:local
     ports:
       - "9100:8188"
     restart: always
@@ -23,7 +23,7 @@ services:
 
   comfyui-2:
     container_name: comfyui-2
-    image: multi-comfyui:latest
+    image: multi-comfyui:local
     ports:
       - "9200:8188"
     restart: always
@@ -43,7 +43,7 @@ services:
 
   comfyui-3:
     container_name: comfyui-3
-    image: multi-comfyui:latest
+    image: multi-comfyui:local
     ports:
       - "9300:8188"
     restart: always
@@ -63,7 +63,7 @@ services:
 
   comfyui-4:
     container_name: comfyui-4
-    image: multi-comfyui:latest
+    image: multi-comfyui:local
     ports:
       - "9400:8188"
     restart: always

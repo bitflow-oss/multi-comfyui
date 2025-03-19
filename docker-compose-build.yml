@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: multi-comfyui
+    image: multi-comfyui:local
     environment:
       - CLI_ARGS=
       - HF_TOKEN=hf_abcdefg
