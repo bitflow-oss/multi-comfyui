@@ -1,10 +1,10 @@
 # Multi Process ComfyUI
 
-### This project started to run multi ComfyUI to match each GPU count.
-### Using docker, runs 2~8 ComfyUI images.
-### Base image is Pytorch official image that CUDA already installed
+- This project started to run multi ComfyUI to match each GPU count.
+- Using docker, runs 2~8 ComfyUI images.
+- Base image is Pytorch official image that CUDA already installed
 
-### So, 
+- So, 
 
 ## 1. Clone this repository
 $ https://github.com/bitflow-oss/multi-comfyui.git
