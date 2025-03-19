@@ -26,6 +26,8 @@ $ ./docker-run.sh
 
 ### ps. requirements.txt file is the recent requirements.txt from ComfyUI github.
 We've annotated Torch, Torch Vision, and Torch Audio because they are already installed in the official PyTorch image.
-The requirements.txt file overrides the file on github, 
+The requirements.txt file overrides the file at ComfyUI Github, 
 so you'll need to check for and replace the latest requirements.txt file 
 and then re-comment out torch, torch vision, torch audio.
+
+# If image is built wrong, remove image and re-build or change tag to another one (local use only)

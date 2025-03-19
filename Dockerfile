@@ -4,7 +4,7 @@ FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel AS builder
 RUN mkdir models user
 
 RUN apt-get update
-RUN apt-get install -y git
+RUN apt-get install -y git --no-install-recommends --no-install-suggests
 
 WORKDIR /code
 
@@ -18,7 +18,7 @@ RUN pip3 wheel --no-cache-dir --no-deps --wheel-dir /app/wheels -r /code/ComfyUI
 RUN cd /code/ComfyUI
 
 # To ignore re-install pytorch that already in the container image, use local requirements.txt that commented out pytorch
-COPY requirements.txt extra_model_paths.yaml /code/
+COPY requirements.txt extra_model_paths.yaml /code/ComfyUI/
 
 # Set the working directory to /code
 WORKDIR /code
@@ -41,6 +41,9 @@ FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
 
 # Set the working directory to /app
 WORKDIR /app
+
+RUN apt-get update
+RUN apt-get install -y git --no-install-recommends --no-install-suggests
 
 # Copy the built dependencies from the builder stage
 COPY --from=builder /app/wheels /wheels
