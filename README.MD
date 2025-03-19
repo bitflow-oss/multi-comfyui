@@ -6,7 +6,10 @@
 
 ### So, 
 
-## 1. You need to change 2 line at Dockerfile describing torch and cuda version like below.
+## 1. Clone this repository
+$ https://github.com/bitflow-oss/multi-comfyui.git
+
+## 2. You need to change 2 line at 'Dockerfile' describing torch and cuda version like below.
 
 - FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel AS builder
 - FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
