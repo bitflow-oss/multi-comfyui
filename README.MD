@@ -1,4 +1,4 @@
-# Multi Process ComfyUI
+# :couple: Multi Process ComfyUI
 
 - This project started to run multi ComfyUI to match each GPU count.
 - Using docker, runs 2~8 ComfyUI images.
