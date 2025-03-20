@@ -1,9 +1,8 @@
 # :couple: Multi Process ComfyUI
 
-- This project designed to some bare metal servers or workstations that have more than 2GPUs.
-- This gonna run 2~8 ComfyUI instances that match your GPU count, 
-- that matches 1 instance by 1 GPU.
-- Base image is from Pytorch official repository that CUDA already installed 
+- This project designed to run at some bare metal servers or workstations that have more than 2GPUs.
+- This gonna run 2~8 ComfyUI instances that match your GPU count, that matches 1 instance by 1 GPU, so we can multi ComfyUI processing.
+- Base image is from Pytorch Official Repository that CUDA already installed 
 
 ### ※ Prerequisites
 #### docker, docker-compose, and git should be installed at your host and callable (each bin folders are added to OS path)
