@@ -13,9 +13,9 @@ $ git clone https://github.com/bitflow-oss/multi-comfyui.git
 - About binding container volume to host volume, refer 'docker-compose.yml' file here.
 ``` 
 
-### 2. After cloning, change 2 line at 'Dockerfile' describing torch and cuda version like below.
+### 2. After cloning, change 2 lines at 'Dockerfile' describing torch and cuda version like below, if needed.
 
-If torch 2.6 and CUDA 12.4 does not neet your needs, fix it to the version you required.
+If torch 2.6 and CUDA 12.4 does not meet your needs, fix it to the version you required.
 
 ``` dockerfile
 - FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel AS builder
@@ -31,12 +31,12 @@ docker-compose-build.yml
 docker-compose.yml
 ```
 
-### 4. Build local docker image using Dockerfile (docker-compose-build.xml)
+### 4. Build local docker image using Docker (docker-compose-build.xml)
 ``` shell
 $ ./docker-build.sh
 ```
 
-### 5. Run docker-compose
+### 5. Run containers
 ``` shell
 $ ./docker-run.sh
 ```
