@@ -24,7 +24,7 @@ $ ./docker-build.sh
 ## 4. Run docker-compose
 $ ./docker-run.sh
 
-### ps. requirements.txt file is the recent requirements.txt from ComfyUI github.
+### ps. Check and compare the requirements.txt file with the recent requirements.txt file at official ComfyUI github.
 We've annotated Torch, Torch Vision, and Torch Audio because they are already installed in the official PyTorch image.
 The requirements.txt file overrides the file at ComfyUI Github, 
 so you'll need to check for and replace the latest requirements.txt file 
