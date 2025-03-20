@@ -5,10 +5,10 @@ RUN mkdir models user output custom_nodes
 
 RUN cd custom_nodes && git clone https://github.com/ltdrdata/ComfyUI-Manager
 
+WORKDIR /code
+
 RUN apt-get update
 RUN apt-get install -y git --no-install-recommends --no-install-suggests
-
-WORKDIR /code
 
 # Copy the current directory contents into the container at $HOME/app setting the owner to the user
 RUN git clone https://github.com/comfyanonymous/ComfyUI
