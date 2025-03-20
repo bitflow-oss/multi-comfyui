@@ -5,7 +5,7 @@
 - Base image is Pytorch official image that CUDA already installed 
 
 ## 1. Clone this repository
-$ https://github.com/bitflow-oss/multi-comfyui.git
+$ git clone https://github.com/bitflow-oss/multi-comfyui.git
 
 ## 2. After clone this sources, you need to change 2 line at 'Dockerfile' describing torch and cuda version like below.
 
