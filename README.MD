@@ -4,10 +4,10 @@
 - Using docker, runs 2~8 ComfyUI images.
 - Base image is Pytorch official image that CUDA already installed 
 
-## 1. Clone this repository
+### 1. Clone this repository
 $ https://github.com/bitflow-oss/multi-comfyui.git
 
-## 2. After clone this sources, you need to change 2 line at 'Dockerfile' describing torch and cuda version like below.
+### 2. After clone this, need to change 2 line at 'Dockerfile' describing torch and cuda version like below.
 
 - FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel AS builder
 - FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
@@ -15,13 +15,13 @@ $ https://github.com/bitflow-oss/multi-comfyui.git
 Fix it to the version you required. 
 Find more image version from https://hub.docker.com/r/pytorch/pytorch/tags
 
-## 2. Modify path & versions at the files below to meet your requirements
+### 3. Modify path & versions at the files below to meet your requirements
 - extra_model_paths.yaml , docker-compose-build.yml , docker-compose.yml
 
-## 3. Build docker image using Dockerfile
+### 4. Build local docker image using Dockerfile (docker-compose-build.xml)
 $ ./docker-build.sh
 
-## 4. Run docker-compose
+### 5. Run docker-compose
 $ ./docker-run.sh
 
 ### ps. requirements.txt file is the recent requirements.txt from ComfyUI github.
