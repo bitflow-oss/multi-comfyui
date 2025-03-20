@@ -3,7 +3,8 @@ FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel AS builder
 
 RUN mkdir models user output custom_nodes
 
-RUN cd custom_nodes && git clone https://github.com/ltdrdata/ComfyUI-Manager
+RUN cd custom_nodes  \
+RUN git clone https://github.com/ltdrdata/ComfyUI-Manager
 
 WORKDIR /code
 
