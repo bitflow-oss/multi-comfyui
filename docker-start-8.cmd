@@ -1,0 +1,1 @@
+docker-compose up -d -f docker-compose-8.yml

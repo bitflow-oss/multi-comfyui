@@ -1,0 +1,172 @@
+services:
+
+  comfyui-1:
+    container_name: comfyui-1
+    image: multi-comfyui:local
+    ports:
+      - "9100:8188"
+    restart: always
+    working_dir: /app
+    volumes:
+      - "./custom_nodes:/app/custom_nodes"
+      - "./output:/app/output"
+      - "./models:/app/models"
+      - "./user:/app/user"
+    command: ["python", "main.py", "--cuda-device", "0", "--listen", "0.0.0.0"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+
+  comfyui-2:
+    container_name: comfyui-2
+    image: multi-comfyui:local
+    ports:
+      - "9200:8188"
+    restart: always
+    working_dir: /app
+    volumes:
+      - "./custom_nodes:/app/custom_nodes"
+      - "./output:/app/output"
+      - "./models:/app/models"
+      - "./user:/app/user"
+    command: [ "python", "main.py", "--cuda-device", "1", "--listen", "0.0.0.0" ]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+
+
+  comfyui-3:
+    container_name: comfyui-3
+    image: multi-comfyui:local
+    ports:
+      - "9300:8188"
+    restart: always
+    working_dir: /app
+    volumes:
+      - "./custom_nodes:/app/custom_nodes"
+      - "./output:/app/output"
+      - "./models:/app/models"
+      - "./user:/app/user"
+    command: ["python", "main.py", "--cuda-device", "2", "--listen", "0.0.0.0"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+
+  comfyui-4:
+    container_name: comfyui-4
+    image: multi-comfyui:local
+    ports:
+      - "9400:8188"
+    restart: always
+    working_dir: /app
+    volumes:
+      - "./custom_nodes:/app/custom_nodes"
+      - "./output:/app/output"
+      - "./models:/app/models"
+      - "./user:/app/user"
+    command: ["python", "main.py", "--cuda-device", "3", "--listen", "0.0.0.0"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  comfyui-5:
+    container_name: comfyui-5
+    image: multi-comfyui:local
+    ports:
+      - "9500:8188"
+    restart: always
+    working_dir: /app
+    volumes:
+      - "./custom_nodes:/app/custom_nodes"
+      - "./output:/app/output"
+      - "./models:/app/models"
+      - "./user:/app/user"
+    command: ["python", "main.py", "--cuda-device", "4", "--listen", "0.0.0.0"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  comfyui-6:
+    container_name: comfyui-6
+    image: multi-comfyui:local
+    ports:
+      - "9600:8188"
+    restart: always
+    working_dir: /app
+    volumes:
+      - "./custom_nodes:/app/custom_nodes"
+      - "./output:/app/output"
+      - "./models:/app/models"
+      - "./user:/app/user"
+    command: ["python", "main.py", "--cuda-device", "5", "--listen", "0.0.0.0"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  comfyui-7:
+    container_name: comfyui-7
+    image: multi-comfyui:local
+    ports:
+      - "9700:8188"
+    restart: always
+    working_dir: /app
+    volumes:
+      - "./custom_nodes:/app/custom_nodes"
+      - "./output:/app/output"
+      - "./models:/app/models"
+      - "./user:/app/user"
+    command: ["python", "main.py", "--cuda-device", "6", "--listen", "0.0.0.0"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  comfyui-8:
+    container_name: comfyui-8
+    image: multi-comfyui:local
+    ports:
+      - "9800:8188"
+    restart: always
+    working_dir: /app
+    volumes:
+      - "./custom_nodes:/app/custom_nodes"
+      - "./output:/app/output"
+      - "./models:/app/models"
+      - "./user:/app/user"
+    command: ["python", "main.py", "--cuda-device", "7", "--listen", "0.0.0.0"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
