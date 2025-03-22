@@ -6,3 +6,6 @@ pillow-avif-plugin
 jxlpy
 imageio-ffmpeg
 accelerate
+gguf
+piexif
+diffusers
