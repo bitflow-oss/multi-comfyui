@@ -19,13 +19,14 @@ RUN git clone https://github.com/comfyanonymous/ComfyUI
 RUN cd /code/ComfyUI
 
 # To ignore re-install pytorch that already in the container image, use local requirements.txt that commented out pytorch
-COPY requirements.txt extra_model_paths.yaml /code/ComfyUI/
+COPY requirements.txt additional-requirements.txt extra_model_paths.yaml /code/ComfyUI/
 
 # Set the working directory to /code
 WORKDIR /code
 
 # Install dependencies specified in requirements.txt
 RUN pip3 wheel --no-cache-dir --no-deps --wheel-dir /app/wheels -r /code/ComfyUI/requirements.txt
+RUN pip3 wheel --no-cache-dir --no-deps --wheel-dir /app/wheels -r /code/ComfyUI/additional-requirements.txt
 
 # Install Checkpoints (selective)
 RUN echo "Downloading checkpoints..."
@@ -57,8 +58,6 @@ COPY --from=builder /app/wheels /wheels
 RUN echo "Install Dependencies to Runtime container"
 RUN pip3 install --no-cache /wheels/*
 RUN rm -rf /wheels
-RUN pip3 install opencv-contrib-python pillow pillow-avif-plugin jxlpy imageio-ffmpeg
-RUN conda install -c conda-forge accelerate -y
 
 # Copy the application code from the builder stage
 RUN echo "Copy source codes to Runtime container"

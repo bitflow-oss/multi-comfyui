@@ -1,0 +1,8 @@
+# Additional required module installation when run ComfyUI Custom Nodes
+
+opencv-contrib-python
+pillow
+pillow-avif-plugin
+jxlpy
+imageio-ffmpeg
+accelerate
