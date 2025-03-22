@@ -47,7 +47,11 @@ $ ./docker-run.sh
 ```
 
 ### 6. Check the shared directories between host and containser
+
 UserName is USER, check the permission is set correctly Read/Write
+
+<br/>
+
 ![Directory Example](https://imagedelivery.net/EAA0G_YMWOl4Q8zl4loPDA/2165e7a5-a03d-44b1-5563-64aad7ff1e00/none)
 
 <br/>
