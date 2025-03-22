@@ -4,7 +4,5 @@ services:
       context: .
       dockerfile: Dockerfile
     image: multi-comfyui:local
-    environment:
-      - CLI_ARGS=
-      - HF_TOKEN=hf_abcdefg
-      - LOW_VRAM=false
+    env_file:
+      - multi-comfyui.env
