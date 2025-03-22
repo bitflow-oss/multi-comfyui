@@ -2,7 +2,7 @@
 # We commented out pytorch that already installed in the image
 # Need to check latest requirements.txt file at ComfyUI github, if changes exists.
 
-comfyui-frontend-package==1.12.14
+comfyui-frontend-package==1.14.5
 #torch
 torchsde
 #torchvision

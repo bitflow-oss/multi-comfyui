@@ -57,6 +57,8 @@ COPY --from=builder /app/wheels /wheels
 RUN echo "Install Dependencies to Runtime container"
 RUN pip3 install --no-cache /wheels/*
 RUN rm -rf /wheels
+RUN pip3 install opencv-contrib-python pillow pillow-avif-plugin jxlpy imageio-ffmpeg
+RUN conda install -c conda-forge accelerate -y
 
 # Copy the application code from the builder stage
 RUN echo "Copy source codes to Runtime container"
