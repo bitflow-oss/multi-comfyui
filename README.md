@@ -4,9 +4,9 @@
 - This gonna run 2~8 ComfyUI instances that match your GPU count, that matches 1 instance by 1 GPU, so we can multi ComfyUI processing.
 - Base image is from Pytorch Official Repository that CUDA already installed 
 
-### I. Get from docker hub
+### I. Get from docker hub | https://hub.docker.com/repository/docker/bitflowinc/multi-comfyui/general
 ```
-https://hub.docker.com/repository/docker/bitflowinc/multi-comfyui/general
+docker pull bitflowinc/multi-comfyui:0.9.7
 ```
 
 ### II. Build from sources or make your custom model/environment
