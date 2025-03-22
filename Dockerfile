@@ -56,6 +56,10 @@ RUN pip3 install --no-cache /wheels/*
 RUN echo "Copy source codes to Runtime container"
 COPY --from=builder /code/ComfyUI /app
 
+RUN git fetch origin
+RUN git reset --hard origin/main
+RUN git reset --hard origin/master
+
 # Expose port 8188 for the ComfyUI application
 EXPOSE 8188
 
