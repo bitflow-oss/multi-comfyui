@@ -22,3 +22,6 @@ venv/
 web_custom_versions/
 .DS_Store
 extra_model_paths.yaml
+
+/doc
+/docs

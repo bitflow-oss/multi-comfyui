@@ -1,1 +1,1 @@
-docker-compose up -d -f docker-start-gpu-8.yml
+docker-compose -f docker-start-gpu-8.yml up -d
