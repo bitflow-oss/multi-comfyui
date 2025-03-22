@@ -67,7 +67,6 @@ COPY --from=builder /code/ComfyUI /app
 WORKDIR /app
 
 RUN git fetch origin
-RUN git reset --hard origin/main
 RUN git reset --hard origin/master
 
 RUN chmod -R 775 /app
