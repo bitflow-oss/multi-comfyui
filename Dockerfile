@@ -50,7 +50,7 @@ RUN mkdir /app/output
 RUN mkdir /app/custom_nodes
 
 RUN apt-get update
-RUN apt-get install -y git libgl1 --no-install-recommends --no-install-suggests
+RUN apt-get install -y git libgl1 libglib2.0-0 --no-install-recommends --no-install-suggests
 
 # Copy the built dependencies from the builder stage
 COPY --from=builder /app/wheels /wheels

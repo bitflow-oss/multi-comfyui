@@ -9,3 +9,5 @@ accelerate
 gguf
 piexif
 diffusers
+ftfy
+sageattention==1.0.6
