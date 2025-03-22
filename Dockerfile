@@ -42,6 +42,11 @@ FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
 
 # Set the working directory to /app
 WORKDIR /app
+RUN mkdir /app/workflow
+RUN mkdir /app/conf
+RUN mkdir /app/models
+RUN mkdir /app/output
+RUN mkdir /app/custom_nodes
 
 RUN apt-get update
 RUN apt-get install -y git --no-install-recommends --no-install-suggests
@@ -51,14 +56,19 @@ COPY --from=builder /app/wheels /wheels
 
 RUN echo "Install Dependencies to Runtime container"
 RUN pip3 install --no-cache /wheels/*
+RUN rm -rf /wheels
 
 # Copy the application code from the builder stage
 RUN echo "Copy source codes to Runtime container"
 COPY --from=builder /code/ComfyUI /app
 
+WORKDIR /app
+
 RUN git fetch origin
 RUN git reset --hard origin/main
 RUN git reset --hard origin/master
+
+RUN chmod -R 775 /app
 
 # Expose port 8188 for the ComfyUI application
 EXPOSE 8188
