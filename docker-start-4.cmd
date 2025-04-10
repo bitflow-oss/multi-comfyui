@@ -1,1 +1,1 @@
-docker-compose -f docker-start-gpu-4.yml up -d
+docker-compose -f config-gpu-4.yml up -d

@@ -1,2 +1,2 @@
 #!/bin/sh
-docker-compose -f docker-start-gpu-8.yml up -d
+docker-compose -f config-gpu-8.yml up -d

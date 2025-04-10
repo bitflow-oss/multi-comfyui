@@ -1,0 +1,1 @@
+docker-compose -f config-gpu-8.yml restart
