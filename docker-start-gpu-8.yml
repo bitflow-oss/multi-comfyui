@@ -9,9 +9,10 @@ services:
     working_dir: /app
     volumes:
       - "./custom_nodes:/app/custom_nodes"
-      - "./output:/app/output"
       - "./models:/app/models"
       - "./user:/app/user"
+      - "./input:/app/input"
+      - "./output:/app/output"
     command: ["python", "main.py", "--cuda-device", "0", "--listen", "0.0.0.0"]
     deploy:
       resources:
