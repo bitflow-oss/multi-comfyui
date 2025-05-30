@@ -1,0 +1,14 @@
+[project]
+name = "comfyui-multigpu"
+description = "This custom_node for ComfyUI adds one-click 'Virtual VRAM' for any GGUF UNet and CLIP loader, managing the offload of layers to DRAM or VRAM to maximize the latent space of your card. Also includes nodes for directly loading entire components (UNet, CLIP, VAE) onto the device you choose. Includes 16 examples covering common use cases."
+version = "1.6.2"
+license = {file = "LICENSE"}
+
+[project.urls]
+Repository = "https://github.com/pollockjj/ComfyUI-MultiGPU"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "pollockjj"
+DisplayName = "ComfyUI-MultiGPU"
+Icon = "https://raw.githubusercontent.com/pollockjj/ComfyUI-MultiGPU/main/assets/multigpu_icon.png"

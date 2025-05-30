@@ -32,9 +32,10 @@ services:
     working_dir: /app
     volumes:
       - "./custom_nodes:/app/custom_nodes"
-      - "./output:/app/output"
       - "./models:/app/models"
       - "./user:/app/user"
+      - "./input:/app/input"
+      - "./output:/app/output"
     command: [ "python", "main.py", "--cuda-device", "1", "--listen", "0.0.0.0" ]
     deploy:
       resources:
@@ -54,9 +55,10 @@ services:
     working_dir: /app
     volumes:
       - "./custom_nodes:/app/custom_nodes"
-      - "./output:/app/output"
       - "./models:/app/models"
       - "./user:/app/user"
+      - "./input:/app/input"
+      - "./output:/app/output"
     command: ["python", "main.py", "--cuda-device", "2", "--listen", "0.0.0.0"]
     deploy:
       resources:
@@ -76,9 +78,10 @@ services:
     working_dir: /app
     volumes:
       - "./custom_nodes:/app/custom_nodes"
-      - "./output:/app/output"
       - "./models:/app/models"
       - "./user:/app/user"
+      - "./input:/app/input"
+      - "./output:/app/output"
     command: ["python", "main.py", "--cuda-device", "3", "--listen", "0.0.0.0"]
     deploy:
       resources:
@@ -97,9 +100,10 @@ services:
     working_dir: /app
     volumes:
       - "./custom_nodes:/app/custom_nodes"
-      - "./output:/app/output"
       - "./models:/app/models"
       - "./user:/app/user"
+      - "./input:/app/input"
+      - "./output:/app/output"
     command: ["python", "main.py", "--cuda-device", "4", "--listen", "0.0.0.0"]
     deploy:
       resources:
@@ -118,9 +122,10 @@ services:
     working_dir: /app
     volumes:
       - "./custom_nodes:/app/custom_nodes"
-      - "./output:/app/output"
       - "./models:/app/models"
       - "./user:/app/user"
+      - "./input:/app/input"
+      - "./output:/app/output"
     command: ["python", "main.py", "--cuda-device", "5", "--listen", "0.0.0.0"]
     deploy:
       resources:
@@ -139,9 +144,10 @@ services:
     working_dir: /app
     volumes:
       - "./custom_nodes:/app/custom_nodes"
-      - "./output:/app/output"
       - "./models:/app/models"
       - "./user:/app/user"
+      - "./input:/app/input"
+      - "./output:/app/output"
     command: ["python", "main.py", "--cuda-device", "6", "--listen", "0.0.0.0"]
     deploy:
       resources:
@@ -160,9 +166,10 @@ services:
     working_dir: /app
     volumes:
       - "./custom_nodes:/app/custom_nodes"
-      - "./output:/app/output"
       - "./models:/app/models"
       - "./user:/app/user"
+      - "./input:/app/input"
+      - "./output:/app/output"
     command: ["python", "main.py", "--cuda-device", "7", "--listen", "0.0.0.0"]
     deploy:
       resources:
