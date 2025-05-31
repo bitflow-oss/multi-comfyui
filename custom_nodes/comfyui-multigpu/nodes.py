@@ -1,5 +1,3 @@
-import os
-import torch
 import folder_paths
 from pathlib import Path
 from nodes import NODE_CLASS_MAPPINGS
@@ -45,7 +43,7 @@ class CLIPLoaderGGUF:
         return {
             "required": {
                 "clip_name": (s.get_filename_list(),),
-                "type": (["stable_diffusion", "stable_cascade", "sd3", "stable_audio", "mochi", "ltxv"],),
+                "type": (["stable_diffusion", "stable_cascade", "sd3", "stable_audio", "mochi", "ltxv", "pixart", "wan"],),
             }
         }
 
@@ -116,6 +114,26 @@ class TripleCLIPLoaderGGUF(CLIPLoaderGGUF):
         from nodes import NODE_CLASS_MAPPINGS
         original_loader = NODE_CLASS_MAPPINGS["TripleCLIPLoaderGGUF"]()
         return original_loader.load_clip(clip_name1, clip_name2, clip_name3, type)
+
+class QuadrupleCLIPLoaderGGUF(CLIPLoaderGGUF):
+    @classmethod
+    def INPUT_TYPES(s):
+        file_options = (s.get_filename_list(), )
+        return {
+            "required": {
+            "clip_name1": file_options,
+            "clip_name2": file_options,
+            "clip_name3": file_options,
+            "clip_name4": file_options,
+        }
+    }
+
+    TITLE = "QuadrupleCLIPLoader (GGUF)"
+
+    def load_clip(self, clip_name1, clip_name2, clip_name3, clip_name4, type="stable_diffusion"):
+        from nodes import NODE_CLASS_MAPPINGS
+        original_loader = NODE_CLASS_MAPPINGS["QuadrupleCLIPLoaderGGUF"]()
+        return original_loader.load_clip(clip_name1, clip_name2, clip_name3, clip_name4, type)
 
 
 class LTXVLoader:
@@ -474,3 +492,98 @@ class DownloadAndLoadHyVideoTextEncoder:
         from nodes import NODE_CLASS_MAPPINGS
         original_loader = NODE_CLASS_MAPPINGS["DownloadAndLoadHyVideoTextEncoder"]()
         return original_loader.loadmodel(llm_model, clip_model, precision, apply_final_norm, hidden_state_skip_layer, quantization)
+class WanVideoModelLoader:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "model": (folder_paths.get_filename_list("diffusion_models"),
+                          {"tooltip": "These models are loaded from the 'ComfyUI/models/diffusion_models' folder",}),
+                "base_precision": (["fp32", "bf16", "fp16", "fp16_fast"], {"default": "bf16"}),
+                "quantization": (
+                    ['disabled', 'fp8_e4m3fn', 'fp8_e4m3fn_fast', 'fp8_e5m2', 'fp8_scaled',
+                     'torchao_fp8dq', "torchao_fp8dqrow", "torchao_int8dq", "torchao_fp6",
+                     "torchao_int4", "torchao_int8"],
+                    {"default": 'disabled', "tooltip": "optional quantization method"}
+                ),
+                "load_device": (["main_device"], {"default": "main_device"}),
+            },
+            "optional": {
+                "attention_mode": ([
+                    "sdpa",
+                    "flash_attn_2",
+                    "flash_attn_3",
+                    "sageattn",
+                ], {"default": "sdpa"}),
+                "compile_args": ("WANCOMPILEARGS", ),
+                "block_swap_args": ("BLOCKSWAPARGS", ),
+                "lora": ("WANVIDLORA", {"default": None}),
+                "vram_management_args": ("VRAM_MANAGEMENTARGS",
+                                          {"default": None, "tooltip": "Alternative offloading method"}),
+            }
+        }
+
+    RETURN_TYPES = ("WANVIDEOMODEL",)
+    RETURN_NAMES = ("model", )
+    FUNCTION = "loadmodel"
+    CATEGORY = "WanVideoWrapper"
+
+    def loadmodel(self, model, base_precision, load_device, quantization,
+                  compile_args=None, attention_mode="sdpa", block_swap_args=None, lora=None, vram_management_args=None):
+        from nodes import NODE_CLASS_MAPPINGS
+        original_loader = NODE_CLASS_MAPPINGS["WanVideoModelLoader"]()
+        return original_loader.loadmodel(model, base_precision, load_device, quantization,
+                                         compile_args, attention_mode, block_swap_args, lora, vram_management_args)
+
+
+class WanVideoVAELoader:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "model_name": (folder_paths.get_filename_list("vae"),
+                               {"tooltip": "These models are loaded from 'ComfyUI/models/vae'"}),
+            },
+            "optional": {
+                "precision": (["fp16", "fp32", "bf16"], {"default": "bf16"}),
+            }
+        }
+
+    RETURN_TYPES = ("WANVAE",)
+    RETURN_NAMES = ("vae", )
+    FUNCTION = "loadmodel"
+    CATEGORY = "WanVideoWrapper"
+    DESCRIPTION = "Loads Wan VAE model from 'ComfyUI/models/vae'"
+
+    def loadmodel(self, model_name, precision):
+        from nodes import NODE_CLASS_MAPPINGS
+        original_loader = NODE_CLASS_MAPPINGS["WanVideoVAELoader"]()
+        return original_loader.loadmodel(model_name, precision)
+
+
+class LoadWanVideoT5TextEncoder:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "model_name": (folder_paths.get_filename_list("text_encoders"),
+                               {"tooltip": "These models are loaded from 'ComfyUI/models/text_encoders'"}),
+                "precision": (["fp16", "fp32", "bf16"], {"default": "bf16"}),
+            },
+            "optional": {
+                "load_device": (["main_device"], {"default": "main_device"}),
+                "quantization": (['disabled', 'fp8_e4m3fn'],
+                                 {"default": 'disabled', "tooltip": "optional quantization method"}),
+            }
+        }
+
+    RETURN_TYPES = ("WANTEXTENCODER",)
+    RETURN_NAMES = ("wan_t5_model", )
+    FUNCTION = "loadmodel"
+    CATEGORY = "WanVideoWrapper"
+    DESCRIPTION = "Loads Wan text_encoder model from 'ComfyUI/models/LLM'"
+
+    def loadmodel(self, model_name, precision, load_device="offload_device", quantization="disabled"):
+        from nodes import NODE_CLASS_MAPPINGS
+        original_loader = NODE_CLASS_MAPPINGS["LoadWanVideoT5TextEncoder"]()
+        return original_loader.loadmodel(model_name, precision, load_device, quantization)

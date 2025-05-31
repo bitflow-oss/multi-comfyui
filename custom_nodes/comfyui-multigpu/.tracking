@@ -28,6 +28,7 @@ examples/hunyuanvideowrapper_select_device.json
 examples/llamacpp_ltxv_2gpu_gguf.json
 examples/ltxvideo_gguf_distorch_lowvram_highdram.json
 examples/sdxl_2gpu.json
+examples/wanvideo_T2V_example_MultiGPU.json
 nodes.py
 precompiled_binaries/linux/llama-quantize
 precompiled_binaries/win64/llama-quantize.exe

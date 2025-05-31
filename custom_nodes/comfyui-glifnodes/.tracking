@@ -1,0 +1,14 @@
+README.md
+.gitignore
+LICENSE
+requirements.txt
+pyproject.toml
+nodes.py
+__init__.py
+.github/workflows/publish.yml
+docs/patch_vae.png
+docs/glif_variable.png
+docs/consistency_vae.png
+docs/load_hf_lora.png
+docs/sdxl_aspect_ratio.png
+docs/multiple_of.png

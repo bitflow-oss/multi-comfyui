@@ -20,14 +20,15 @@ from typing import Dict, List
 from nodes import NODE_CLASS_MAPPINGS as GLOBAL_NODE_CLASS_MAPPINGS
 from .nodes import (
     UnetLoaderGGUF, UnetLoaderGGUFAdvanced,
-    CLIPLoaderGGUF, DualCLIPLoaderGGUF, TripleCLIPLoaderGGUF,
+    CLIPLoaderGGUF, DualCLIPLoaderGGUF, TripleCLIPLoaderGGUF, QuadrupleCLIPLoaderGGUF,
     LTXVLoader,
     Florence2ModelLoader, DownloadAndLoadFlorence2Model,
     CheckpointLoaderNF4,
     LoadFluxControlNet,
     MMAudioModelLoader, MMAudioFeatureUtilsLoader, MMAudioSampler,
     PulidModelLoader, PulidInsightFaceLoader, PulidEvaClipLoader,
-    HyVideoModelLoader, HyVideoVAELoader, DownloadAndLoadHyVideoTextEncoder
+    HyVideoModelLoader, HyVideoVAELoader, DownloadAndLoadHyVideoTextEncoder,
+    WanVideoModelLoader, WanVideoVAELoader, LoadWanVideoT5TextEncoder
 )
 
 current_device = mm.get_torch_device()
@@ -692,6 +693,8 @@ NODE_CLASS_MAPPINGS["VAELoaderMultiGPU"] = override_class(GLOBAL_NODE_CLASS_MAPP
 NODE_CLASS_MAPPINGS["CLIPLoaderMultiGPU"] = override_class_clip(GLOBAL_NODE_CLASS_MAPPINGS["CLIPLoader"])
 NODE_CLASS_MAPPINGS["DualCLIPLoaderMultiGPU"] = override_class_clip(GLOBAL_NODE_CLASS_MAPPINGS["DualCLIPLoader"])
 NODE_CLASS_MAPPINGS["TripleCLIPLoaderMultiGPU"] = override_class_clip(GLOBAL_NODE_CLASS_MAPPINGS["TripleCLIPLoader"])
+NODE_CLASS_MAPPINGS["QuadrupleCLIPLoaderMultiGPU"] = override_class_clip(GLOBAL_NODE_CLASS_MAPPINGS["QuadrupleCLIPLoader"])
+NODE_CLASS_MAPPINGS["CLIPVisionLoaderMultiGPU"] = override_class_clip(GLOBAL_NODE_CLASS_MAPPINGS["CLIPVisionLoader"])
 NODE_CLASS_MAPPINGS["CheckpointLoaderSimpleMultiGPU"] = override_class(GLOBAL_NODE_CLASS_MAPPINGS["CheckpointLoaderSimple"])
 NODE_CLASS_MAPPINGS["ControlNetLoaderMultiGPU"] = override_class(GLOBAL_NODE_CLASS_MAPPINGS["ControlNetLoader"])
 
@@ -724,6 +727,8 @@ if check_module_exists("ComfyUI-GGUF") or check_module_exists("comfyui-gguf"):
     NODE_CLASS_MAPPINGS["DualCLIPLoaderGGUFDisTorchMultiGPU"] = override_class_with_distorch_clip(DualCLIPLoaderGGUF)
     NODE_CLASS_MAPPINGS["TripleCLIPLoaderGGUFMultiGPU"] = override_class_clip(TripleCLIPLoaderGGUF)
     NODE_CLASS_MAPPINGS["TripleCLIPLoaderGGUFDisTorchMultiGPU"] = override_class_with_distorch_clip(TripleCLIPLoaderGGUF)
+    NODE_CLASS_MAPPINGS["QuadrupleCLIPLoaderGGUFMultiGPU"] = override_class_clip(QuadrupleCLIPLoaderGGUF)
+    NODE_CLASS_MAPPINGS["QuadrupleCLIPLoaderGGUFDisTorchMultiGPU"] = override_class_with_distorch_clip(QuadrupleCLIPLoaderGGUF)
 
 if check_module_exists("PuLID_ComfyUI") or check_module_exists("pulid_comfyui"):
     NODE_CLASS_MAPPINGS["PulidModelLoaderMultiGPU"] = override_class(PulidModelLoader)
@@ -734,5 +739,11 @@ if check_module_exists("ComfyUI-HunyuanVideoWrapper") or check_module_exists("co
     NODE_CLASS_MAPPINGS["HyVideoModelLoaderMultiGPU"] = override_class(HyVideoModelLoader)
     NODE_CLASS_MAPPINGS["HyVideoVAELoaderMultiGPU"] = override_class(HyVideoVAELoader)
     NODE_CLASS_MAPPINGS["DownloadAndLoadHyVideoTextEncoderMultiGPU"] = override_class(DownloadAndLoadHyVideoTextEncoder)
+
+if check_module_exists("ComfyUI-WanVideoWrapper") or check_module_exists("comfyui-wanvideowrapper"):
+    NODE_CLASS_MAPPINGS["WanVideoModelLoaderMultiGPU"] = override_class(WanVideoModelLoader)
+    NODE_CLASS_MAPPINGS["WanVideoVAELoaderMultiGPU"] = override_class(WanVideoVAELoader)
+    NODE_CLASS_MAPPINGS["LoadWanVideoT5TextEncoderMultiGPU"] = override_class(LoadWanVideoT5TextEncoder)
+
 
 logging.info(f"MultiGPU: Registration complete. Final mappings: {', '.join(NODE_CLASS_MAPPINGS.keys())}")
