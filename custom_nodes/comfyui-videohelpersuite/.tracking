@@ -24,6 +24,7 @@ video_formats/ffmpeg-gif.json
 video_formats/gifski.json
 video_formats/h264-mp4.json
 video_formats/h265-mp4.json
+video_formats/nvenc_av1-mp4.json
 video_formats/nvenc_h264-mp4.json
 video_formats/nvenc_hevc-mp4.json
 video_formats/webm.json
